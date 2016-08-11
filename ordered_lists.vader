@@ -1,0 +1,78 @@
+" Test functionality with ordered lists
+
+Given markdown (1 Test adding list items at end of list):
+  1. a
+  2. list
+
+Do:
+  j
+  A\<CR>
+  new
+
+Expect:
+  1. a
+  2. list
+  3. new
+
+Given markdown (2 Test ending lists):
+  1. a
+  2. list
+
+Do:
+  j
+  A\<CR>\<CR>
+  new
+
+Expect:
+  1. a
+  2. list
+  
+  new
+
+Given markdown (3 Test paragraph lists):
+  1. a
+
+  2. list
+
+Do:
+  G
+  A\<CR>
+  new
+
+Expect:
+  1. a
+
+  2. list
+
+  3. new
+
+Given markdown (4 Test paragraph lists):
+  1. a
+
+  2. list
+
+Do:
+  G
+  A\<CR>\<CR>
+  new
+
+Expect:
+  1. a
+
+  2. list
+
+  new
+
+Given markdown (5 Test non-indented multi-line items):
+  1. a multi-line
+  list
+
+Do:
+  G
+  A\<CR>
+  new
+
+Expect:
+  1. a multi-line
+  list
+  2. new

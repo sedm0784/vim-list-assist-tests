@@ -1,0 +1,87 @@
+" Test for false positives
+
+Given objc (Doesn't affect OBJC files):
+  - (void)method;
+
+Do:
+  A\<CR>
+  - (void)anotherMethod;
+
+Expect:
+  - (void)method;
+  - (void)anotherMethod;
+
+Given markdown (1 Doesn't affect regular <CR>):
+  this is my
+  test file
+
+Do (Press Return at end of regular line):
+  A\<CR>
+  new
+
+Expect:
+  this is my
+  new
+  test file
+
+Given markdown (2 Doesn't affect regular <CR>):
+  this is my
+  - test file
+
+Do (Press Return at end of line before list):
+  A\<CR>
+  new
+
+Expect:
+  this is my
+  new
+  - test file
+
+Given markdown (3 Doesn't affect regular <CR>):
+  this is my
+  1. test
+  2. file
+
+Do (Press Return at end of line before ordered list):
+  A\<CR>
+  new
+
+Expect:
+  this is my
+  new
+  1. test
+  2. file
+
+Given markdown (4 Doesn't affect regular <CR>):
+  doing a test
+
+Do (Press Return in middle of line before whitespace):
+  ea\<CR>
+  new
+
+Expect:
+  doing
+  new a test
+
+Given markdown (5 Doesn't affect regular <CR>):
+  doing a test
+
+Do (Press Return in middle of line after whitespace):
+  wi\<CR>
+  new
+
+Expect:
+  doing 
+  newa test
+
+Given markdown (6 Doesn't affect regular <CR>):
+  ABCD
+
+Do (Press Return in middle of word):
+  a\<CR>
+  Z
+
+Expect:
+  A
+  ZBCD
+
