@@ -1,0 +1,125 @@
+" Test functionality of paragraph list setting
+
+Given markdown (0.1 Test g:vim_list_assist_paragraphs == 0):
+  - a list
+
+Execute (Set g:vim_list_assist_paragraphs):
+  let g:vim_list_assist_paragraphs = 0
+
+Do:
+  A\<CR>
+  new
+  \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+  - new
+
+  new
+
+Given markdown (0.2 Test g:vim_list_assist_paragraphs == 0):
+  - a list
+
+  - second item
+
+Execute (Set g:vim_list_assist_paragraphs):
+  let g:vim_list_assist_paragraphs = 0
+
+Do:
+  GA\<CR>
+  new
+  \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+
+  - second item
+  - new
+
+  new
+
+Given markdown (1.1 Test g:vim_list_assist_paragraphs == 1):
+  - a list
+
+Execute (Set g:vim_list_assist_paragraphs):
+  let g:vim_list_assist_paragraphs = 1
+
+Do:
+  A\<CR>
+  new
+  \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+  - new
+
+  new
+
+Given markdown (1.2 Test g:vim_list_assist_paragraphs == 1):
+  - a list
+
+  - second item
+
+Execute (Set g:vim_list_assist_paragraphs):
+  let g:vim_list_assist_paragraphs = 1
+
+Do:
+  GA\<CR>
+  new
+  \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+
+  - second item
+
+  - new
+
+  new
+
+Given markdown (2 Test g:vim_list_assist_paragraphs == 2):
+  - a list
+
+Execute (Set g:vim_list_assist_paragraphs):
+  let g:vim_list_assist_paragraphs = 2
+
+Do:
+  A\<CR>
+  new
+  \<CR>\<CR>
+  new
+  \<CR>\<CR>\<CR>
+  new
+
+Expect:
+  - a list
+  - new
+
+  - new
+
+  new
+
+Given markdown (3 Test g:vim_list_assist_paragraphs == 3):
+  - a list
+  - second item
+
+Execute (Set g:vim_list_assist_paragraphs):
+  let g:vim_list_assist_paragraphs = 3
+
+Do:
+  A\<CR>
+  new
+  \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+  - second item
+
+  - new
+
+  new
