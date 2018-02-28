@@ -79,7 +79,7 @@ Expect:
     lines
   - new
 
-Given markdown (4 Works with non-indented multi-line list items):
+Given markdown (5 Works with non-indented multi-line list items):
   - a list item that has
   multiple non-indented
   lines
@@ -95,7 +95,7 @@ Expect:
   lines
   - new
 
-Given markdown (5 Terminates lists with multi-line items):
+Given markdown (6 Terminates lists with multi-line items):
   - a list item that has
     multiple indented
     lines
@@ -116,7 +116,7 @@ Expect:
 
   Not a list
 
-Given markdown (6 Works with paragraph list items):
+Given markdown (7 Works with paragraph list items):
   Not a list
 
   - a list
@@ -137,7 +137,7 @@ Expect:
 
   - new
 
-Given markdown (7 Ends lists with paragraph list items):
+Given markdown (8 Ends lists with paragraph list items):
   Not a list
 
   - a list
@@ -158,7 +158,7 @@ Expect:
 
   new
 
-Given markdown (8 Don't continue lists incorrectly):
+Given markdown (9 Don't continue lists incorrectly):
   - A list
   blank
 
@@ -172,7 +172,7 @@ Expect:
 
   new
 
-Given markdown (9 Don't continue lists incorrectly):
+Given markdown (10 Don't continue lists incorrectly):
   - A list
   a list
   blank
@@ -188,7 +188,7 @@ Expect:
 
   new
 
-Given markdown (10 Continue multiple paragraph lists):
+Given markdown (11 Continue multiple paragraph lists):
   - A list
     with
 
@@ -206,7 +206,7 @@ Expect:
     multiple paragraphs
   - new
 
-Given markdown (11 Continue multiple paragraph lists):
+Given markdown (12 Continue multiple paragraph lists):
   - A list
 
   - with
