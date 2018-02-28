@@ -1,0 +1,224 @@
+" Test functionality with unordered lists
+
+Before:
+  let g:list_assist_paragraphs = 'never'
+
+Given markdown (1 Adds list markers):
+  Not a list
+
+  - a
+  - list
+
+  Not a list
+
+Do (Press Return at end of list item):
+  jjj
+  A\<CR>
+  new
+
+Expect:
+  Not a list
+
+  - a
+  - list
+  - new
+
+  Not a list
+
+Given markdown (2 Splits existing list items):
+  - a
+  - list with
+  - three items
+
+Do (Press Return in middle of list item):
+  j
+  e
+  a\<CR>
+  new
+
+Expect:
+  - a
+  - list
+  - new with
+  - three items
+
+Given markdown (3 Terminates lists):
+  - end of
+  - a list
+
+  Not a list
+
+Do (Press Return twice at end of list item):
+  j
+  A\<CR>\<CR>
+  new
+
+Expect:
+  - end of
+  - a list
+
+  new
+
+  Not a list
+
+Given markdown (4 Works with multi-line list items):
+  - a list item that has
+    multiple indented
+    lines
+
+Do (Press Return at end of multi-line list item):
+  jj
+  A\<CR>
+  new
+
+Expect:
+  - a list item that has
+    multiple indented
+    lines
+  - new
+
+Given markdown (5 Works with non-indented multi-line list items):
+  - a list item that has
+  multiple non-indented
+  lines
+
+Do (Press Return at end of non-indented multi-line list item):
+  jj
+  A\<CR>
+  new
+
+Expect:
+  - a list item that has
+  multiple non-indented
+  lines
+  - new
+
+Given markdown (6 Terminates lists with multi-line items):
+  - a list item that has
+    multiple indented
+    lines
+
+  Not a list
+
+Do (Press Return twice at end of multi-line list item):
+  jj
+  A\<CR>\<CR>
+  new
+
+Expect:
+  - a list item that has
+    multiple indented
+    lines
+  
+  new
+
+  Not a list
+
+Given markdown (7 Ignores paragraph list items):
+  Not a list
+
+  - a list
+
+  - list items containing paragraphs
+
+Do (Press Return at end of list item):
+  G
+  A\<CR>
+  new
+
+Expect:
+  Not a list
+
+  - a list
+
+  - list items containing paragraphs
+  - new
+
+Given markdown (8 Ends lists with paragraph list items):
+  Not a list
+
+  - a list
+
+  - list items containing paragraphs
+
+Do (Press Return twice at end of list item):
+  G
+  A\<CR>\<CR>
+  new
+
+Expect:
+  Not a list
+
+  - a list
+
+  - list items containing paragraphs
+
+  new
+
+Given markdown (9 Don't continue lists incorrectly):
+  - A list
+  blank
+
+Do:
+  j
+  cc\<CR>
+  new
+
+Expect:
+  - A list
+
+  new
+
+Given markdown (10 Don't continue lists incorrectly):
+  - A list
+  a list
+  blank
+
+Do:
+  jj
+  cc\<CR>
+  new
+
+Expect:
+  - A list
+  a list
+
+  new
+
+Given markdown (11 Continue multiple paragraph lists):
+  - A list
+    with
+
+    multiple paragraphs
+
+Do:
+  G
+  A\<CR>
+  new
+
+Expect:
+  - A list
+    with
+
+    multiple paragraphs
+  - new
+
+Given markdown (12 Continue multiple paragraph lists):
+  - A list
+
+  - with
+
+    multiple paragraphs
+
+Do:
+  G
+  A\<CR>
+  new
+
+Expect:
+  - A list
+
+  - with
+
+    multiple paragraphs
+  - new
