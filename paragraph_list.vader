@@ -68,6 +68,28 @@ Expect:
 
   new
 
+Given markdown (1.2 Test g:list_assist_paragraphs = 'manual'):
+  1. a list
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'manual'
+
+Do:
+  A\<CR>
+  new
+  \<CR>\<CR>
+  new
+  \<CR>\<CR>\<CR>
+  new
+
+Expect:
+  1. a list
+  2. new
+
+  3. new
+
+  new
+
 "
 " Test cases for AUTO
 "
