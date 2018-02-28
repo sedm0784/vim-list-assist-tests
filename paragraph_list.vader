@@ -12,11 +12,11 @@
 "
 " Test cases for setting 0: NEVER
 "
-Given markdown (0.1 Test g:vim_list_assist_paragraphs == 0):
+Given markdown (0.1 Test g:list_assist_paragraphs == 0):
   - a list
 
-Execute (Set g:vim_list_assist_paragraphs):
-  let g:vim_list_assist_paragraphs = 0
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 0
 
 Do:
   A\<CR>
@@ -30,13 +30,13 @@ Expect:
 
   new
 
-Given markdown (0.2 Test g:vim_list_assist_paragraphs == 0):
+Given markdown (0.2 Test g:list_assist_paragraphs == 0):
   - a list
 
   - second item
 
-Execute (Set g:vim_list_assist_paragraphs):
-  let g:vim_list_assist_paragraphs = 0
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 0
 
 Do:
   GA\<CR>
@@ -55,11 +55,11 @@ Expect:
 "
 " Test cases for setting 1: MANUAL
 "
-Given markdown (1 Test g:vim_list_assist_paragraphs == 1):
+Given markdown (1 Test g:list_assist_paragraphs == 1):
   - a list
 
-Execute (Set g:vim_list_assist_paragraphs):
-  let g:vim_list_assist_paragraphs = 1
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 1
 
 Do:
   A\<CR>
@@ -80,11 +80,11 @@ Expect:
 "
 " Test cases for setting 2: AUTOMATIC
 "
-Given markdown (2.1 Test g:vim_list_assist_paragraphs == 2):
+Given markdown (2.1 Test g:list_assist_paragraphs == 2):
   - a list
 
-Execute (Set g:vim_list_assist_paragraphs):
-  let g:vim_list_assist_paragraphs = 2
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 2
 
 Do:
   A\<CR>
@@ -98,13 +98,13 @@ Expect:
 
   new
 
-Given markdown (2.2 Test g:vim_list_assist_paragraphs == 2):
+Given markdown (2.2 Test g:list_assist_paragraphs == 2):
   - a list
 
   - second item
 
-Execute (Set g:vim_list_assist_paragraphs):
-  let g:vim_list_assist_paragraphs = 2
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 2
 
 Do:
   GA\<CR>
@@ -124,12 +124,12 @@ Expect:
 "
 " Test cases for setting 3: ALWAYS
 "
-Given markdown (3 Test g:vim_list_assist_paragraphs == 3):
+Given markdown (3 Test g:list_assist_paragraphs == 3):
   - a list
   - second item
 
-Execute (Set g:vim_list_assist_paragraphs):
-  let g:vim_list_assist_paragraphs = 3
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 3
 
 Do:
   GA\<CR>

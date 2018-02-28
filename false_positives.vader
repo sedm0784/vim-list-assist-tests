@@ -1,8 +1,8 @@
 " Test for false positives
 
 Before:
-  if exists('g:vim_list_assist_paragraphs')
-    unlet g:vim_list_assist_paragraphs
+  if exists('g:list_assist_paragraphs')
+    unlet g:list_assist_paragraphs
   endif
 
 Given objc (Doesn't affect OBJC files):
