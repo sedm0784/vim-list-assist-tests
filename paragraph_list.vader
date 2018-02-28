@@ -1,5 +1,17 @@
 " Test functionality of paragraph list setting
+"
+" Setting values:
+"
+" 0: NEVER use paragraph lists
+" 1: MANUAL paragraph lists. The first <CR> adds a non-paragraph list item, the
+"    second converts to a paragraph list item, the third ends the list.
+" 2: AUTOMATIC paragraph lists. Paragraph lists are used if the current list
+"    item is a paragraph list, otherwise non-paragraph list items are used.
+" 3: ALWAYS use paragraph lists.
 
+"
+" Test cases for setting 0: NEVER
+"
 Given markdown (0.1 Test g:vim_list_assist_paragraphs == 0):
   - a list
 
@@ -40,52 +52,14 @@ Expect:
 
   new
 
-Given markdown (1.1 Test g:vim_list_assist_paragraphs == 1):
+"
+" Test cases for setting 1: MANUAL
+"
+Given markdown (1 Test g:vim_list_assist_paragraphs == 1):
   - a list
 
 Execute (Set g:vim_list_assist_paragraphs):
   let g:vim_list_assist_paragraphs = 1
-
-Do:
-  A\<CR>
-  new
-  \<CR>\<CR>
-  new
-
-Expect:
-  - a list
-  - new
-
-  new
-
-Given markdown (1.2 Test g:vim_list_assist_paragraphs == 1):
-  - a list
-
-  - second item
-
-Execute (Set g:vim_list_assist_paragraphs):
-  let g:vim_list_assist_paragraphs = 1
-
-Do:
-  GA\<CR>
-  new
-  \<CR>\<CR>
-  new
-
-Expect:
-  - a list
-
-  - second item
-
-  - new
-
-  new
-
-Given markdown (2 Test g:vim_list_assist_paragraphs == 2):
-  - a list
-
-Execute (Set g:vim_list_assist_paragraphs):
-  let g:vim_list_assist_paragraphs = 2
 
 Do:
   A\<CR>
@@ -103,6 +77,53 @@ Expect:
 
   new
 
+"
+" Test cases for setting 2: AUTOMATIC
+"
+Given markdown (2.1 Test g:vim_list_assist_paragraphs == 2):
+  - a list
+
+Execute (Set g:vim_list_assist_paragraphs):
+  let g:vim_list_assist_paragraphs = 2
+
+Do:
+  A\<CR>
+  new
+  \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+  - new
+
+  new
+
+Given markdown (2.2 Test g:vim_list_assist_paragraphs == 2):
+  - a list
+
+  - second item
+
+Execute (Set g:vim_list_assist_paragraphs):
+  let g:vim_list_assist_paragraphs = 2
+
+Do:
+  GA\<CR>
+  new
+  \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+
+  - second item
+
+  - new
+
+  new
+
+"
+" Test cases for setting 3: ALWAYS
+"
 Given markdown (3 Test g:vim_list_assist_paragraphs == 3):
   - a list
   - second item
