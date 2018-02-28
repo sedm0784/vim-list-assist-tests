@@ -1,22 +1,13 @@
 " Test functionality of paragraph list setting
 "
-" Setting values:
 "
-" 0: NEVER use paragraph lists
-" 1: MANUAL paragraph lists. The first <CR> adds a non-paragraph list item, the
-"    second converts to a paragraph list item, the third ends the list.
-" 2: AUTOMATIC paragraph lists. Paragraph lists are used if the current list
-"    item is a paragraph list, otherwise non-paragraph list items are used.
-" 3: ALWAYS use paragraph lists.
-
+" Test cases for NEVER
 "
-" Test cases for setting 0: NEVER
-"
-Given markdown (0.1 Test g:list_assist_paragraphs == 0):
+Given markdown (0.1 Test g:list_assist_paragraphs = 'never'):
   - a list
 
 Execute (Set g:list_assist_paragraphs):
-  let g:list_assist_paragraphs = 0
+  let g:list_assist_paragraphs = 'never'
 
 Do:
   A\<CR>
@@ -30,13 +21,13 @@ Expect:
 
   new
 
-Given markdown (0.2 Test g:list_assist_paragraphs == 0):
+Given markdown (0.2 Test g:list_assist_paragraphs = 'never'):
   - a list
 
   - second item
 
 Execute (Set g:list_assist_paragraphs):
-  let g:list_assist_paragraphs = 0
+  let g:list_assist_paragraphs = 'never'
 
 Do:
   GA\<CR>
@@ -53,13 +44,13 @@ Expect:
   new
 
 "
-" Test cases for setting 1: MANUAL
+" Test cases for MANUAL
 "
-Given markdown (1 Test g:list_assist_paragraphs == 1):
+Given markdown (1.1 Test g:list_assist_paragraphs = 'manual'):
   - a list
 
 Execute (Set g:list_assist_paragraphs):
-  let g:list_assist_paragraphs = 1
+  let g:list_assist_paragraphs = 'manual'
 
 Do:
   A\<CR>
@@ -78,13 +69,13 @@ Expect:
   new
 
 "
-" Test cases for setting 2: AUTOMATIC
+" Test cases for AUTO
 "
-Given markdown (2.1 Test g:list_assist_paragraphs == 2):
+Given markdown (2.1 Test g:list_assist_paragraphs = 'auto'):
   - a list
 
 Execute (Set g:list_assist_paragraphs):
-  let g:list_assist_paragraphs = 2
+  let g:list_assist_paragraphs = 'auto'
 
 Do:
   A\<CR>
@@ -98,13 +89,13 @@ Expect:
 
   new
 
-Given markdown (2.2 Test g:list_assist_paragraphs == 2):
+Given markdown (2.2 Test g:list_assist_paragraphs = 'auto'):
   - a list
 
   - second item
 
 Execute (Set g:list_assist_paragraphs):
-  let g:list_assist_paragraphs = 2
+  let g:list_assist_paragraphs = 'auto'
 
 Do:
   GA\<CR>
@@ -122,14 +113,14 @@ Expect:
   new
 
 "
-" Test cases for setting 3: ALWAYS
+" Test cases for ALWAYS
 "
-Given markdown (3 Test g:list_assist_paragraphs == 3):
+Given markdown (3 Test g:list_assist_paragraphs = 'always'):
   - a list
   - second item
 
 Execute (Set g:list_assist_paragraphs):
-  let g:list_assist_paragraphs = 3
+  let g:list_assist_paragraphs = 'always'
 
 Do:
   GA\<CR>
