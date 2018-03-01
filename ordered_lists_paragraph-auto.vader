@@ -1,5 +1,7 @@
 " Test functionality with ordered lists
 
+" FIXME: Add test cases for bracketed indices 1) etc
+
 Before:
   let g:list_assist_paragraphs = 'auto'
 

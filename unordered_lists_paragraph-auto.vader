@@ -1,5 +1,8 @@
 " Test functionality with unordered lists
 
+" FIXME: Add test cases for different bullets +/-
+" FIXME: Add test cases for different amounts of whitespace before and after bullet.
+
 Before:
   let g:list_assist_paragraphs = 'auto'
 
