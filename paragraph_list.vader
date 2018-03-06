@@ -9,11 +9,42 @@ Given markdown (0.1 Test g:list_assist_paragraphs = 'never'):
 Execute (Set g:list_assist_paragraphs):
   let g:list_assist_paragraphs = 'never'
 
-Do:
+" Think this might be a Vader bug. Works fine in Vim -Nu NONE, and splitting
+" the commands into two tests (see below) seems to work fine.
+Do (FIXME: Try adding an item and then ending list):
   A\<CR>
   new
   \<CR>\<CR>
   new
+
+Expect:
+  - a list
+  - new
+
+  new
+
+Given markdown (0.1.1 Test g:list_assist_paragraphs = 'never'):
+  - a list
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'never'
+
+Do (Add item):
+  A\<CR>new
+
+Expect:
+  - a list
+  - new
+
+Given markdown (0.1.2 Test g:list_assist_paragraphs = 'never'):
+  - a list
+  - new
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'never'
+
+Do (End list):
+  GA\<CR>\<CR>new
 
 Expect:
   - a list
@@ -29,10 +60,50 @@ Given markdown (0.2 Test g:list_assist_paragraphs = 'never'):
 Execute (Set g:list_assist_paragraphs):
   let g:list_assist_paragraphs = 'never'
 
-Do:
+# See comment on test 0.1
+Do (FIXME: Add item and end list):
   GA\<CR>
   new
   \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+
+  - second item
+  - new
+
+  new
+
+Given markdown (0.2.1 Test g:list_assist_paragraphs = 'never'):
+  - a list
+
+  - second item
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'never'
+
+Do (Add item):
+  GA\<CR>
+  new
+
+Expect:
+  - a list
+
+  - second item
+  - new
+
+Given markdown (0.2.2 Test g:list_assist_paragraphs = 'never'):
+  - a list
+
+  - second item
+  - new
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'never'
+
+Do (End list):
+  GA\<CR>\<CR>
   new
 
 Expect:
@@ -52,12 +123,65 @@ Given markdown (1.1 Test g:list_assist_paragraphs = 'manual'):
 Execute (Set g:list_assist_paragraphs):
   let g:list_assist_paragraphs = 'manual'
 
-Do:
+# See comment on test 0.1
+Do (FIXME: Add two items and end list):
   A\<CR>
   new
   \<CR>\<CR>
   new
   \<CR>\<CR>\<CR>
+  new
+
+Expect:
+  - a list
+  - new
+
+  - new
+
+  new
+
+Given markdown (1.1.1 Test g:list_assist_paragraphs = 'manual'):
+  - a list
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'manual'
+
+Do (Add item):
+  A\<CR>
+  new
+
+Expect:
+  - a list
+  - new
+
+Given markdown (1.1.2 Test g:list_assist_paragraphs = 'manual'):
+  - a list
+  - new
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'manual'
+
+Do (Add second item):
+  GA\<CR>\<CR>
+  new
+
+Expect:
+  - a list
+  - new
+
+  - new
+
+Given markdown (1.1.3 Test g:list_assist_paragraphs = 'manual'):
+  - a list
+  - new
+
+  - new
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'manual'
+
+Do (End list):
+  GA\<CR>\<CR>\<CR>
   new
 
 Expect:
@@ -74,12 +198,65 @@ Given markdown (1.2 Test g:list_assist_paragraphs = 'manual'):
 Execute (Set g:list_assist_paragraphs):
   let g:list_assist_paragraphs = 'manual'
 
-Do:
+# See comment on test 0.1
+Do (FIXME: Add two items and end list):
   A\<CR>
   new
   \<CR>\<CR>
   new
   \<CR>\<CR>\<CR>
+  new
+
+Expect:
+  1. a list
+  2. new
+
+  3. new
+
+  new
+
+Given markdown (1.2.1 Test g:list_assist_paragraphs = 'manual'):
+  1. a list
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'manual'
+
+Do (Add item):
+  A\<CR>
+  new
+
+Expect:
+  1. a list
+  2. new
+
+Given markdown (1.2.2 Test g:list_assist_paragraphs = 'manual'):
+  1. a list
+  2. new
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'manual'
+
+Do (Add second item):
+  GA\<CR>\<CR>
+  new
+
+Expect:
+  1. a list
+  2. new
+
+  3. new
+
+Given markdown (1.2.3 Test g:list_assist_paragraphs = 'manual'):
+  1. a list
+  2. new
+
+  3. new
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'manual'
+
+Do (End list):
+  GA\<CR>\<CR>\<CR>
   new
 
 Expect:
@@ -99,10 +276,42 @@ Given markdown (2.1 Test g:list_assist_paragraphs = 'auto'):
 Execute (Set g:list_assist_paragraphs):
   let g:list_assist_paragraphs = 'auto'
 
-Do:
+# See comment on test 0.1
+Do (FIXME: Add item and end list):
   A\<CR>
   new
   \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+  - new
+
+  new
+
+Given markdown (2.1.1 Test g:list_assist_paragraphs = 'auto'):
+  - a list
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'auto'
+
+Do (Add item):
+  A\<CR>
+  new
+
+Expect:
+  - a list
+  - new
+
+Given markdown (2.1.2 Test g:list_assist_paragraphs = 'auto'):
+  - a list
+  - new
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'auto'
+
+Do (End list):
+  GA\<CR>\<CR>
   new
 
 Expect:
@@ -119,10 +328,53 @@ Given markdown (2.2 Test g:list_assist_paragraphs = 'auto'):
 Execute (Set g:list_assist_paragraphs):
   let g:list_assist_paragraphs = 'auto'
 
-Do:
+# See comment on test 0.1
+Do (FIXME: Add item and end list):
   GA\<CR>
   new
   \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+
+  - second item
+
+  - new
+
+  new
+
+Given markdown (2.2.1 Test g:list_assist_paragraphs = 'auto'):
+  - a list
+
+  - second item
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'auto'
+
+Do (Add item):
+  GA\<CR>
+  new
+
+Expect:
+  - a list
+
+  - second item
+
+  - new
+
+Given markdown (2.2.2 Test g:list_assist_paragraphs = 'auto'):
+  - a list
+
+  - second item
+
+  - new
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'auto'
+
+Do (End list):
+  GA\<CR>\<CR>
   new
 
 Expect:
@@ -144,10 +396,49 @@ Given markdown (3 Test g:list_assist_paragraphs = 'always'):
 Execute (Set g:list_assist_paragraphs):
   let g:list_assist_paragraphs = 'always'
 
-Do:
+# See comment on test 0.1
+Do (FIXME: Add item and end list):
   GA\<CR>
   new
   \<CR>\<CR>
+  new
+
+Expect:
+  - a list
+  - second item
+
+  - new
+
+  new
+
+Given markdown (3.1 Test g:list_assist_paragraphs = 'always'):
+  - a list
+  - second item
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'always'
+
+Do (Add item):
+  GA\<CR>
+  new
+
+Expect:
+  - a list
+  - second item
+
+  - new
+
+Given markdown (3.2 Test g:list_assist_paragraphs = 'always'):
+  - a list
+  - second item
+
+  - new
+
+Execute (Set g:list_assist_paragraphs):
+  let g:list_assist_paragraphs = 'always'
+
+Do (End list):
+  GA\<CR>\<CR>
   new
 
 Expect:

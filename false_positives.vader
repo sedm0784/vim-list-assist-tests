@@ -60,7 +60,8 @@ Expect:
 Given markdown (4 Doesn't affect regular <CR>):
   doing a test
 
-Do (Press Return in middle of line before whitespace):
+" This seems to work okay when tested manually. Not sure what's causing it.
+Do (FIXME: Press Return in middle of line before whitespace):
   ea\<CR>
   new
 
