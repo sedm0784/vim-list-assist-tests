@@ -272,3 +272,37 @@ Expect ():
 Execute (Reset options):
   set textwidth&
   set formatoptions&
+
+" Does it make sense to leave the blank line? Do we actually just want to
+" create a new item? Or would the user simply insert the marker in that case?
+Given markdown (16 Inserting text at start of line in list item):
+  - A list item
+  with more text
+  spanning lines
+  - Second item
+
+Do (Insert <CR> at start of line):
+  jji\<CR>
+
+Expect ():
+  - A list item
+  with more text
+  
+  - spanning lines
+  - Second item
+
+Given markdown (17 Inserting text just after start of line in list item):
+  - A list item
+  with more text
+  spanning lines
+  - Second item
+
+Do (Insert <CR> in column 2):
+  jjli\<CR>
+
+Expect ():
+  - A list item
+  with more text
+  s
+  - panning lines
+  - Second item

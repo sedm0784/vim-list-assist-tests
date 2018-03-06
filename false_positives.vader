@@ -131,3 +131,14 @@ Expect:
 
 Execute (Reset autoindent):
   set autoindent&
+
+Given markdown (9 Handle CR when inserting at start of line):
+  test
+
+Do:
+  i\<CR>
+
+Expect:
+  
+  test
+
