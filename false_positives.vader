@@ -5,7 +5,7 @@ Before:
     unlet g:list_assist_paragraphs
   endif
 
-Given objc (Doesn't affect OBJC files):
+Given objc (0 Doesn't affect OBJC files):
   - (void)method;
 
 Do:
