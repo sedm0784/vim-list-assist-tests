@@ -91,3 +91,43 @@ Expect:
   A
   ZBCD
 
+Given markdown (7 Correctly handle 'formatoptions' including a):
+  xxx xxxxxxx xx xxxxxx xxxx xxx xxxxxxx xx xxx xxxxxx xxxxx xxxx xxx xx 
+  xxxxx xxxxxxxx xx xxxxxxx xxxxxxxxx xxxx xx xxxxxx xxxxx. xxxx xxx xxxxx 
+  xx xxxx xxxxxxx xxxxxxxx xxxx xxx xxxxxxxxxx xxxxxxx xxxxxxxxx x xxxxx 
+  xxxxx
+
+Execute (Set 'textwidth' and 'formatoptions'):
+  set textwidth=72
+  set formatoptions+=tcrqwanj
+
+Do (Press Return in middle of line in middle of paragraph):
+  )hs\<CR>
+
+Expect:
+  xxx xxxxxxx xx xxxxxx xxxx xxx xxxxxxx xx xxx xxxxxx xxxxx xxxx xxx xx 
+  xxxxx xxxxxxxx xx xxxxxxx xxxxxxxxx xxxx xx xxxxxx xxxxx.
+  xxxx xxx xxxxx xx xxxx xxxxxxx xxxxxxxx xxxx xxx xxxxxxxxxx xxxxxxx 
+  xxxxxxxxx x xxxxx xxxxx
+
+Execute (Reset options):
+  set textwidth&
+  set formatoptions&
+
+Given markdown (8 Handle autoindent):
+  not indented
+    indented
+
+Execute (Set 'autoindent'):
+  set autoindent
+
+Do:
+  GA\<CR>new
+
+Expect:
+  not indented
+    indented
+    new
+
+Execute (Reset autoindent):
+  set autoindent&

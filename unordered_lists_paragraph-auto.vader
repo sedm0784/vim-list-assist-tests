@@ -251,3 +251,24 @@ Expect:
   - list
   -
   - new items
+
+Given markdown (15 Handle 'formatoptions' including 'a'):
+  - blah foo baz bar
+    blah foo baz bar
+    blah
+
+Execute (Set options):
+  set textwidth=20
+  set formatoptions+=a
+
+Do (Insert <CR> in middle of list item):
+  eels\<CR>
+
+Expect ():
+  - blah foo
+  - baz bar blah foo
+    baz bar blah
+
+Execute (Reset options):
+  set textwidth&
+  set formatoptions&
