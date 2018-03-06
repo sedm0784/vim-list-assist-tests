@@ -81,3 +81,72 @@ Expect:
   1. a multi-line
   list
   2. new
+
+Given markdown (6 Insert blank line when before list marker):
+  1. list
+  2. item
+
+Do:
+  GI\<CR>
+
+Expect:
+  1. list
+  
+  2. item
+
+# Is this the correct behaviour? Not really sure what it *should* do. Maybe it
+# should be another option.
+Given markdown (7 Insert blank line when on list marker):
+  1. list
+  2. item
+
+Do:
+  Ga\<CR>
+
+Expect:
+  1. list
+  
+  2. item
+
+# Ditto. Is this behaviour what you'd expect?
+Given markdown (8 Insert blank line when on list marker):
+  1. list
+  2. item
+  3. item
+  4. item
+  5. item
+  6. item
+  7. item
+  8. item
+  9. item
+  10. item
+  11. item
+
+Do:
+  Ga\<CR>
+
+Expect:
+  1. list
+  2. item
+  3. item
+  4. item
+  5. item
+  6. item
+  7. item
+  8. item
+  9. item
+  10. item
+
+  11. item
+
+Given markdown (9 Insert blank list item when just after list marker):
+  1. list
+  2. item
+
+Do:
+  Gla\<CR>new
+
+Expect:
+  1. list
+  2.
+  3. new item

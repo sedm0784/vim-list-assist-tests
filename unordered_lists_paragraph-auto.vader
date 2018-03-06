@@ -227,3 +227,27 @@ Expect:
     multiple paragraphs
 
   - new
+
+Given markdown (13 Insert empty lines when before list marker):
+  - list
+  - items
+
+Do:
+  GI\<CR>
+
+Expect:
+  - list
+  
+  - items
+
+Given markdown (14 Insert empty list item when just after list marker):
+  - list
+  - items
+
+Do:
+  Ga\<CR>new
+
+Expect:
+  - list
+  -
+  - new items
